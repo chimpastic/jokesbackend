@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*h$w6!ml@vf6w+yzeug1_zap)@^ab^no)4hqdn4)ob2q+zqq%$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['3.110.32.6', 'mugdh.com', 'www.mugdh.com']
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     "corsheaders",
     'storages',
-    'api.user'
+    'api.user',
 ]
 
 MIDDLEWARE = [
@@ -79,22 +79,22 @@ WSGI_APPLICATION = 'backend_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mugdhdb',
-        'USER': 'postgres',
-        'PASSWORD': 'Primate_y2k',
-        'HOST': 'database-1.ckfih0rinn95.ap-south-1.rds.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'mugdhdb',
+#        'USER': 'postgres',
+#        'PASSWORD': 'Primate_y2k',
+#        'HOST': 'database-1.ckfih0rinn95.ap-south-1.rds.amazonaws.com',
+#        'PORT': '5432',
+#    }
+# }
 
 
 # Password validation
