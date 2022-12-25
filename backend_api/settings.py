@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*h$w6!ml@vf6w+yzeug1_zap)@^ab^no)4hqdn4)ob2q+zqq%$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['3.110.32.6', 'mugdh.com', 'www.mugdh.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "corsheaders",
     'storages',
     'api.user',
+    'api.core',
+    'api.product'
 ]
 
 MIDDLEWARE = [
@@ -79,22 +81,22 @@ WSGI_APPLICATION = 'backend_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 # DATABASES = {
 #    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'mugdhdb',
-#        'USER': 'postgres',
-#        'PASSWORD': 'Primate_y2k',
-#        'HOST': 'database-1.ckfih0rinn95.ap-south-1.rds.amazonaws.com',
-#        'PORT': '5432',
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mugdhdb',
+        'USER': 'postgres',
+        'PASSWORD': 'Primate_y2k',
+        'HOST': 'database-1.ckfih0rinn95.ap-south-1.rds.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
@@ -139,6 +141,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_QUERYSTRING_AUTH = False
 AWS_LOCATION = 'static'
+AWS_MEDIA_LOCATION = 'media'
 AWS_HEADERS = {
     'Access-Control-Allow-Origin': '*',
 }
@@ -149,10 +152,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'backend_api/static'),
 ]
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+DEFAULT_FILE_STORAGE = 'backend_api.storage_backends.MediaStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS: True
-AUTH_USER_MODEL = 'user.UserProfile'
+AUTH_USER_MODEL = 'user.User'
