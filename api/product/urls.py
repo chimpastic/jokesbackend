@@ -6,6 +6,7 @@ from api.product import views
 
 router = DefaultRouter()
 router.register('cat', views.CategoryViewSet)
+router.register('product', views.ProductViewSet)
 
 appname = 'product'
 
