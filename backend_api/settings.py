@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*h$w6!ml@vf6w+yzeug1_zap)@^ab^no)4hqdn4)ob2q+zqq%$
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'storages',
     'api.user',
     'api.core',
-    'api.product'
+    'api.product',
+    'api.timepass'
 ]
 
 MIDDLEWARE = [
@@ -82,22 +83,32 @@ WSGI_APPLICATION = 'backend_api.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.sqlite3',
+#       'NAME': BASE_DIR / 'db.sqlite3',
+#   }
+# }
+# DATABASES = {
 #    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'mugdhdb',
+#        'USER': 'postgres',
+#        'PASSWORD': 'Primate_y2k',
+#        'HOST': 'database-1.ckfih0rinn95.ap-south-1.rds.amazonaws.com',
+#        'PORT': '5432',
 #    }
 # }
+# Local postgres database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mugdhdb',
+        'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'Primate_y2k',
-        'HOST': 'database-1.ckfih0rinn95.ap-south-1.rds.amazonaws.com',
-        'PORT': '5432',
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
